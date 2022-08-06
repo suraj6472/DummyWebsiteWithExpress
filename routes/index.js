@@ -13,7 +13,7 @@ module.exports = (params) => {
     request.session.visitCount += 1;
 
     console.log(request.session.visitCount);
-    response.render('pages/index', { pageTitle: 'Welcome' });
+    response.render('layout/index', { pageTitle: 'Welcome', template: 'index' });
   });
 
   router.use('/speakers', speakerRoutes(params));
