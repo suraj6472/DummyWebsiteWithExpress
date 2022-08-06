@@ -5,15 +5,19 @@ const app = express();
 
 const port = 3000;
 
-app.use(express.static("./static"));
+app.set('view engine', 'ejs');
 
-app.get("/", (request, response) => {
+app.set('views', path.join(__dirname, './views'));
+
+app.use(express.static('./static'));
+
+app.get('/', (request, response) => {
   //   response.sendFile(__dirname + "/static/index.html");
-  response.sendFile(path.join(__dirname, "/static/index.html"));
+  response.sendFile(path.join(__dirname, '/static/index.html'));
 });
 
-app.get("/speakers", (request, response) => {
-  response.sendFile(path.join(__dirname, "/static/speakers.html"));
+app.get('/speakers', (request, response) => {
+  response.sendFile(path.join(__dirname, '/static/speakers.html'));
 });
 
 app.listen(port, () => {
