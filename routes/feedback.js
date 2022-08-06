@@ -1,0 +1,15 @@
+const express = require('express');
+
+const router = express.Router();
+
+module.exports = () => {
+  router.get('/', (request, response) => {
+    response.send('Feedback List');
+  });
+
+  router.post('/', (request, response) => {
+    response.send('Feedback form posted');
+  });
+
+  return router;
+};
