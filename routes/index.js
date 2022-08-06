@@ -11,7 +11,6 @@ module.exports = (params) => {
     //   request.session.visitCount = 0;
     // }
     // request.session.visitCount += 1;
-    // console.log(request.session.visitCount);
 
     const { speakerService } = params;
     const topSpeakers = await speakerService.getList();

@@ -9,8 +9,16 @@ module.exports = (params) => {
     response.render('layout', { template: 'speakers', speakers, pageTitle: 'Speakers' });
   });
 
-  router.get('/:shortname', (request, response) => {
-    response.send(`This is shortname ${request.params.shortname}`);
+  router.get('/:shortname', async (request, response) => {
+    let shortname = request.params.shortname;
+    const speaker = await speakerService.getSpeaker(shortname);
+    const speakerArtwork = await speakerService.getArtworkForSpeaker(shortname);
+    response.render('layout', {
+      template: 'speakers-details',
+      speaker,
+      speakerArtwork,
+      pageTitle: speaker.name,
+    });
   });
 
   return router;
