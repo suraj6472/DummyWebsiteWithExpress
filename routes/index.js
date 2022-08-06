@@ -13,6 +13,7 @@ module.exports = (params) => {
     request.session.visitCount += 1;
 
     console.log(request.session.visitCount);
+    //PASSING TEMPLATE: here second argument is the object of variable being passed to that specific template
     response.render('layout/index', { pageTitle: 'Welcome', template: 'index' });
   });
 

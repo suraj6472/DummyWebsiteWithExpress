@@ -1,5 +1,5 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 const router = require('./routes');
 const cookieSession = require('cookie-session');
 
@@ -25,6 +25,19 @@ app.use(
     keys: ['dadaspapd', 'asdasdaadsd'],
   })
 );
+
+//PASSING TEMPLATE: it will be available throughout the life cycle of the application
+app.locals.siteName = 'ROUX Meetups';
+
+//PASSING TEMPLATE: this will be available in all templates
+app.use(async (req, res, next) => {
+  try {
+    res.locals.speakerNames = await speakerService.getNames();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.use('/', router({ feedbackService, speakerService }));
 
