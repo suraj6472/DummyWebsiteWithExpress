@@ -5,8 +5,8 @@ const router = express.Router();
 module.exports = (params) => {
   const { speakerService } = params;
   router.get('/', async (request, response) => {
-    speakerList = await speakerService.getList();
-    response.json(speakerList);
+    speakers = await speakerService.getList();
+    response.render('layout', { template: 'speakers', speakers, pageTitle: 'Speakers' });
   });
 
   router.get('/:shortname', (request, response) => {
