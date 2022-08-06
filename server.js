@@ -33,6 +33,7 @@ app.locals.siteName = 'ROUX Meetups';
 app.use(async (req, res, next) => {
   try {
     res.locals.speakerNames = await speakerService.getNames();
+    console.log(res.locals.speakerNames);
     next();
   } catch (error) {
     next(error);
