@@ -12,8 +12,7 @@ app.set('views', path.join(__dirname, './views'));
 app.use(express.static('./static'));
 
 app.get('/', (request, response) => {
-  //   response.sendFile(__dirname + "/static/index.html");
-  response.sendFile(path.join(__dirname, '/static/index.html'));
+  response.render('pages/index', { pageTitle: 'Welcome' });
 });
 
 app.get('/speakers', (request, response) => {
