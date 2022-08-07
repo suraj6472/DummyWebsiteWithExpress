@@ -7,7 +7,7 @@ module.exports = (params) => {
   router.get('/', async (request, response, next) => {
     try {
       feedbackList = await feedbackService.getList();
-      response.json(feedbackList);
+      response.render('layout', { template: 'feedback', pageTitle: 'Feedback', feedbackList });
     } catch (error) {
       throw new Error(error);
     }
