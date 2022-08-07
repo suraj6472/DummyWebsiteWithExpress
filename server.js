@@ -26,10 +26,8 @@ app.use(
   })
 );
 
-//PASSING TEMPLATE: it will be available throughout the life cycle of the application
 app.locals.siteName = 'ROUX Meetups';
 
-//PASSING TEMPLATE: this will be available in all templates
 app.use(async (req, res, next) => {
   try {
     res.locals.speakerNames = await speakerService.getNames();
